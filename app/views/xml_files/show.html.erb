@@ -1,0 +1,18 @@
+<div class="create-xml-file pull-right">
+  <%= link_to "Create", new_xml_file_path, class: "btn btn-info" %>
+</div>
+
+<h3>XML Files > View</h3>
+
+<table class="table">
+    <tr>
+      <td>ID:</td>
+      <td><%= @xml_file.id %></td>
+    </tr>
+    <tr>
+      <td>Slug:</td>
+      <td><%= @xml_file.slug %></td>
+    </tr>
+</table>
+<%= link_to "Edit", edit_xml_file_path(@xml_file) %> | 
+<%= link_to "Delete", xml_file_path(@xml_file), method: :delete, data: { confirm: "Are you sure?" } %>
