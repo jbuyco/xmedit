@@ -2,3 +2,6 @@ language: ruby
 
 rvm:
   - 1.9.3
+
+before_script:
+  - psql -c 'create database xmedit_test;' -U postgres
