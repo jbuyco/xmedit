@@ -1,5 +1,7 @@
 # XMEdit
 
+[![Build Status](https://travis-ci.org/jbuyco/xmedit.png?branch=master)](https://travis-ci.org/jbuyco/xmedit)
+
 A small web app used to create and share an XML document online
 
 ## Why?
