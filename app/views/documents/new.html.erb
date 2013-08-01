@@ -1,0 +1,9 @@
+<h1>New Document</h1>
+<hr />
+<%= simple_form_for(@document) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :slug %>
+  <%= f.button :submit, "Create New Document", class: "btn" %> 
+  or
+  <%= link_to "Cancel", documents_path %>
+<% end %>

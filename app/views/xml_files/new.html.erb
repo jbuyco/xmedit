@@ -1,9 +1,0 @@
-<h1>New XML File</h1>
-<hr />
-<%= simple_form_for(@xml_file) do |f| %>
-  <%= f.error_notification %>
-  <%= f.input :slug %>
-  <%= f.button :submit, "Create New XML File", class: "btn" %> 
-  or
-  <%= link_to "Cancel", xml_files_path %>
-<% end %>

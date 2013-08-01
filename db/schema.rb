@@ -11,13 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130731014418) do
+ActiveRecord::Schema.define(:version => 20130731023419) do
 
-  create_table "xml_files", :force => true do |t|
+  create_table "documents", :force => true do |t|
     t.string   "slug",                        :null => false
     t.text     "description", :default => "", :null => false
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
   end
+
+  create_table "nodes", :force => true do |t|
+    t.integer  "document_id"
+    t.string   "name",        :null => false
+    t.string   "value",       :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "nodes", ["document_id"], :name => "index_nodes_on_document_id"
 
 end

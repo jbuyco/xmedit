@@ -1,9 +1,9 @@
-<h1>Edit XML File</h1>
+<h1>Edit Document</h1>
 <hr />
-<%= simple_form_for(@xml_file) do |f| %>
+<%= simple_form_for(@document) do |f| %>
   <%= f.error_notification %>
   <%= f.input :slug %>
   <%= f.button :submit, "Update", class: "btn" %> 
   or
-  <%= link_to "Cancel", xml_file_path(@xml_file) %>
+  <%= link_to "Cancel", document_path(@document) %>
 <% end %>

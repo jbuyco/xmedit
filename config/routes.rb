@@ -1,5 +1,5 @@
 Xmedit::Application.routes.draw do
-  root to: "xml_files#index"
+  root to: "documents#index"
 
-  resources :xml_files
+  resources :documents
 end

@@ -1,4 +1,4 @@
-class XmlFile < ActiveRecord::Base
+class Document < ActiveRecord::Base
   attr_accessible :slug
   validates :slug, presence: true
 end

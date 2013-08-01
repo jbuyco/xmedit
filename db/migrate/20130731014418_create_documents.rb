@@ -1,6 +1,6 @@
-class CreateXmlFiles < ActiveRecord::Migration
+class CreateDocuments < ActiveRecord::Migration
   def change
-    create_table :xml_files do |t|
+    create_table :documents do |t|
       t.string :slug, null: false
       t.text :description, null: false, default: ""
       t.timestamps
