@@ -1,0 +1,8 @@
+<div id="node-<%= node.id %>">
+  <%= form_tag(node_path(node), method: :put, remote: true, class: "form-inline") do %>
+    <%= text_field_tag "node[name]", node.name, class: "span2" %> 
+    <%= text_field_tag "node[value]", node.value, class: "span2" %> 
+    <%= button_tag icon("ok"), class: "btn btn-success", disabled: true %>
+    <%= link_to icon("remove"), node_path(node), method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure?", remote: true } %>
+  <% end %>
+</div>

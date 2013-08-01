@@ -1,0 +1,6 @@
+$('#node-<%= @node.id %>').replaceWith('<%= escape_javascript(render("nodes/node", node: @node)) %>');
+$('#success-message').html('Node updated!');
+$('.alert-success').slideDown();
+setTimeout(function() {
+  $('.alert-success').slideUp();
+}, 2000);

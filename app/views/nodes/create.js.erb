@@ -1,0 +1,7 @@
+$('#nodes').append('<%= escape_javascript(render("nodes/node", node: @node)) %>');
+$('#new-node #node_name, #new-node #node_value').val("");
+$('#success-message').html('Node added!');
+$('.alert-success').slideDown();
+setTimeout(function() {
+  $('.alert-success').slideUp();
+}, 2000);

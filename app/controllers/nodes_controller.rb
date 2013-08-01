@@ -1,31 +1,28 @@
 class NodesController < ApplicationController
-  # before_filter :ajax_required, only: :create
+  before_filter :ajax_required
 
   def update
-    node = Node.find(params[:id])
-    document = node.document
-    if node.update_attributes(params[:node])
-      redirect_to edit_document_url(document), notice: "Updated node!"
-    else
-      redirect_to edit_document_url(document), alert: "Unable to update node"
+    @node = Node.find(params[:id])
+    document = @node.document
+    unless @node.update_attributes(params[:node])
+      render "error", locals: { error: "Unable to update node!" }
     end
   end
 
   def create
     document = Document.find_by_slug(params[:slug])
-    node = document.nodes.new(params[:node])
-    if node.valid?
-      node.save!
-      redirect_to edit_document_url(document), notice: "Created node!"
+    @node = document.nodes.new(params[:node])
+    if @node.valid?
+      @node.save!
     else
-      redirect_to edit_document_url(document), alert: "Unable to create node"
+      render partial: "error", locals: { error: "Unable to create node!" }
     end
   end
 
   def destroy
-    node = Node.find(params[:id])
-    document = node.document
-    node.destroy
-    redirect_to edit_document_url(document), notice: "Deleted node"
+    @node = Node.find(params[:id])
+    @node.destroy
+  rescue
+    render partial: "error", locals: { error: "Unable to delete node!" }
   end
 end

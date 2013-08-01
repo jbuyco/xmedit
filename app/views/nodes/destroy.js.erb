@@ -1,0 +1,6 @@
+$('div#node-<%= @node.id %>').slideUp();
+$('#success-message').html('Node deleted!');
+$('.alert-success').slideDown();
+setTimeout(function() {
+  $('.alert-success').slideUp();
+}, 2000);

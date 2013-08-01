@@ -1,0 +1,5 @@
+$('#error-message').html('<%= escape_javascript(error) %>');
+$('.alert-error').slideDown();
+setTimeout(function() {
+  $('.alert-error').slideUp();
+}, 2000);
