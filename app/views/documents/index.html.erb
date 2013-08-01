@@ -19,8 +19,7 @@
         <td><%= document.id %></td>
         <td><%= document.slug %></td>
         <td>
-          <%= link_to "Edit", edit_document_path(document) %> | 
-          <%= link_to "Delete", document_path(document), method: :delete, data: { confirm: "Are you sure?" } %>
+          <%= link_to "Edit", edit_document_path(document) %>
         </td>
       </tr>
     <% end %>

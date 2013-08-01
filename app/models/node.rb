@@ -3,4 +3,6 @@ class Node < ActiveRecord::Base
   validates :name, presence: true
   validates :value, presence: true
   belongs_to :document
+
+  scope :ordered, order("name")
 end

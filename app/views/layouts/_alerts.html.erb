@@ -1,8 +1,8 @@
-<div class="alert alert-error hide">
+<div class="alert alert-error <%= "hide" unless flash[:alert] %>">
   <a class="close" data-dismiss="alert">×</a>
-  <div id="error-message"></div>
+  <div id="error-message"><%= flash[:alert] %></div>
 </div>
-<div class="alert alert-success hide">
+<div class="alert alert-success <%= "hide" unless flash[:notice] %>">
   <a class="close" data-dismiss="alert">×</a>
-  <div id="success-message"></div>
+  <div id="success-message"><%= flash[:notice] %></div>
 </div>
