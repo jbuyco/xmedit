@@ -1,5 +1,7 @@
 Xmedit::Application.routes.draw do
-  root to: "documents#index"
+  root to: "pages#home"
 
-  resources :documents
+  resources :documents, except: :show
+  resources :nodes
+  get "documents/:slug", to: "documents#show", as: "document", defaults: { format: "xml" }
 end

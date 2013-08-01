@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<root>
+  <% @nodes.each do |node| %>
+    <%= raw("<#{node.name}>#{node.value}</#{node.name}>") %>
+  <% end %>
+</root>

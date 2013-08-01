@@ -1,42 +1,31 @@
 class NodesController < ApplicationController
-  def index
-    @nodes = Node.all
-  end
-
-  def new
-    @node = Node.new
-  end
-
-  def edit
-    @node = Node.find(params[:id])
-  end
+  # before_filter :ajax_required, only: :create
 
   def update
-    @node = Node.find(params[:id])
-    if @node.update_attributes(params[:node])
-      redirect_to node_path(@node)
+    node = Node.find(params[:id])
+    document = node.document
+    if node.update_attributes(params[:node])
+      redirect_to edit_document_url(document), notice: "Updated node!"
     else
-      render action: "edit"
+      redirect_to edit_document_url(document), alert: "Unable to update node"
     end
   end
 
-  def show
-    @node = Node.find(params[:id])
-  end
-
   def create
-    @node = Node.new(params[:node])
-    if @node.valid?
-      @node.save!
-      redirect_to nodes_url
+    document = Document.find_by_slug(params[:slug])
+    node = document.nodes.new(params[:node])
+    if node.valid?
+      node.save!
+      redirect_to edit_document_url(document), notice: "Created node!"
     else
-      render action: "new"
+      redirect_to edit_document_url(document), alert: "Unable to create node"
     end
   end
 
   def destroy
-    @node = Node.find(params[:id])
-    @node.destroy
-    redirect_to nodes_path
+    node = Node.find(params[:id])
+    document = node.document
+    node.destroy
+    redirect_to edit_document_url(document), notice: "Deleted node"
   end
 end

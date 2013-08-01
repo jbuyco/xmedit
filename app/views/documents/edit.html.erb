@@ -1,9 +1,23 @@
 <h1>Edit Document</h1>
 <hr />
-<%= simple_form_for(@document) do |f| %>
-  <%= f.error_notification %>
-  <%= f.input :slug %>
-  <%= f.button :submit, "Update", class: "btn" %> 
-  or
-  <%= link_to "Cancel", document_path(@document) %>
+
+<div class="well">
+  <%= document_url(@document.slug) %>
+  <%= link_to "Preview", document_url(@document.slug), target: "_blank", class: "pull-right btn btn-info" %>
+</div>
+
+<% @nodes.each do |node| %>
+  <%= form_tag(node_path(node), method: :put, class: "form-inline") do %>
+    <%= text_field_tag "node[name]", node.name, class: "span2" %> 
+    <%= text_field_tag "node[value]", node.value, class: "span2" %> 
+    <%= button_tag "Update", class: "btn" %>
+    <%= link_to "Delete", node_path(node), method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure?" } %>
+  <% end %>
+<% end %>
+
+<%= form_tag(nodes_path, class: "form-inline") do %>
+  <%= hidden_field_tag "slug", @document.slug %>
+  <%= text_field_tag "node[name]", nil, placeholder: "name", class: "span2" %> 
+  <%= text_field_tag "node[value]", nil, placeholder: "value", class: "span2" %> 
+  <%= button_tag "Add", class: "btn btn-success" %>
 <% end %>
