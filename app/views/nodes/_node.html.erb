@@ -1,7 +1,17 @@
-<div id="node-<%= node.id %>">
+<div id="node-<%= node.id %>" class="node-container">
   <%= form_tag(node_path(node), method: :put, remote: true, class: "form-inline") do %>
-    <%= text_field_tag "node[name]", node.name, class: "span2" %> 
-    <%= text_field_tag "node[value]", node.value, class: "span2" %> 
+    <div class="input-prepend">
+      <span class="add-on" title="tag">
+        <%= dark_icon("chevron-left") + dark_icon("chevron-right") %>
+      </span>
+      <%= text_field_tag "node[name]", node.name, class: "span3", data: { value: node.name } %>
+    </div>
+    <div class="input-prepend">
+      <span class="add-on" title="tag">
+        <%= dark_icon("pencil") %>
+      </span>
+      <%= text_field_tag "node[value]", node.value, class: "span3", data: { value: node.value } %>
+    </div>
     <%= button_tag icon("ok"), class: "btn btn-success", disabled: true %>
     <%= link_to icon("remove"), node_path(node), method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure?", remote: true } %>
   <% end %>

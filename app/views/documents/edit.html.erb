@@ -1,23 +1,45 @@
 <h1>Edit Document</h1>
 <hr />
 
-<div class="well">
-  <%= document_url(@document.slug) %>
-  <%= link_to "Preview", document_url(@document.slug), target: "_blank", class: "pull-right btn btn-info" %>
+<p class="lead">
+  The URL below will generate an XML file based on your customized nodes!
+</p>
+
+<div class="row">
+  <div class="span10">
+    <div class="input-append">
+      <%= text_field_tag "xml_url", document_url(@document.slug), class: "span10", readonly: true %>
+      <%= link_to "Preview", document_url(@document.slug), type: "button", class: "btn btn-info", target: "_blank" %>
+    </div>
+  </div>
 </div>
 
-<div id="nodes">
-  <% @nodes.each do |node| %>
-    <%= render "nodes/node", node: node %>
-  <% end %>
+<div class="row">
+  <div id="nodes" class="span10">
+    <% @nodes.each do |node| %>
+      <%= render "nodes/node", node: node %>
+    <% end %>
+  </div>
 </div>
+
+<h3>Add Node</h3>
 
 <div class="row">
   <div id="new-node" class="span10">
     <%= form_tag(nodes_path, class: "form-inline", remote: true) do %>
       <%= hidden_field_tag "slug", @document.slug %>
-      <%= text_field_tag "node[name]", nil, placeholder: "name", class: "span2" %>
-      <%= text_field_tag "node[value]", nil, placeholder: "value", class: "span2" %>
+      <div class="input-prepend">
+        <span class="add-on" title="tag">
+          <%= dark_icon("chevron-left") + dark_icon("chevron-right") %>
+        </span>
+        <%= text_field_tag "node[name]", nil, placeholder: "name", class: "span3" %>
+      </div>
+      <div class="input-prepend">
+        <span class="add-on" title="tag">
+          <%= dark_icon("pencil") %>
+        </span>
+        <%= text_field_tag "node[value]", nil, placeholder: "value", class: "span3" %>
+      </div>
       <%= button_tag icon("plus"), class: "btn btn-success" %>
       <%= button_tag icon("repeat"), class: "btn btn-danger", type: "reset" %>
     <% end %>
@@ -27,7 +49,15 @@
 <script type="text/javascript">
 $(document).ready(function() {
   $('#nodes').on('keyup', 'input', function(e) {
-    $(e.target).next('button.btn-success').attr('disabled', false);
+    $input     = $(e.target);
+    $container = $input.parents('.node-container');
+    $button    = $container.find('button.btn-success');
+    if ($input.data('value') != $input.val()) {
+      $button.attr('disabled', false);
+    }
+    else {
+      $button.attr('disabled', true);
+    }
   });
 });
 </script>
