@@ -1,3 +1,38 @@
 .create-document {
   margin-top: 15px;
 }
+@media (max-width: 480px) {
+  .input-prepend {
+    width: 100%;
+  }
+  input[type="text"] {
+    height: 60px;
+    font-size: 30px;
+    max-width: 280px;
+  }
+  .input-append .btn:last-child {
+    height: 50px;
+    line-height: 50px;
+  }
+  .input-prepend .add-on:first-child {
+    height: 50px;
+    width: 28px;
+    line-height: 50px;
+  }
+  #nodes .input-prepend,
+  #new-node .input-prepend {
+    margin-bottom: 15px;
+  }
+  #new-node input[type="text"] {
+    line-height: 50px;
+  }
+  .node-container button.btn {
+    width: 101px;
+    height: 40px;
+  }
+  .node-container a.btn {
+    width: 81px;
+    height: 30px;
+    line-height: 30px;
+  }
+}
