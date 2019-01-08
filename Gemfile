@@ -1,14 +1,14 @@
-source 'https://rubygems.org'
-ruby "1.9.3"
+source "https://rubygems.org"
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+
+gem "rails", "5.2.2"
 
 gem 'bootstrap-sass'  # Twitter bootstrap
 gem 'jquery-rails'
 gem 'pg'              # Postgres
-gem 'quiet_assets'    # hide useless asset request log messages
-gem 'rails', '3.2.12'
 
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'uglifier'
 end
